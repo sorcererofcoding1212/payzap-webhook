@@ -7,7 +7,13 @@ configDotenv.config();
 
 const app = express();
 
-app.use(cors());
+const BANK_URL = process.env.BANK_URL || "http://localhost:4000";
+
+app.use(
+  cors({
+    origin: [BANK_URL],
+  })
+);
 app.use(express.json());
 
 app.use("/api/v1", webhookRouter);
