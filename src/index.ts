@@ -10,6 +10,13 @@ const app = express();
 const BANK_URL = process.env.BANK_URL || "http://localhost:4000";
 const APP_URL = process.env.APP_URL || "http://localhost:3000";
 
+console.log(BANK_URL);
+console.log(APP_URL);
+
+app.use("/", () => {
+  console.log("Website has been hit");
+})
+
 app.use(cors({ origin: [BANK_URL, APP_URL] }));
 app.use(express.json());
 
